@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tk.ssm.dao.A_ROLEDao" >
+  <resultMap id="BaseResultMap" type="com.tk.ssm.model.A_ROLE" >
+    <id column="ROLE_ID" property="roleId" jdbcType="OTHER" />
+    <result column="ROLE_NAME" property="roleName" jdbcType="OTHER" />
+    <result column="UNDEFIEND1" property="undefiend1" jdbcType="DECIMAL" />
+    <result column="UNDEFIEND2" property="undefiend2" jdbcType="DECIMAL" />
+    <result column="UNDEFIEND3" property="undefiend3" jdbcType="DECIMAL" />
+  </resultMap>
+
+  <select id="selectAllRole" resultMap="BaseResultMap" parameterType="java.lang.Object" >
+    SELECT * FROM A_ROLE ORDER BY ROLE_ID
+  </select>
+
+  <delete id="deleteRole" parameterType="java.lang.Object" >
+    delete from A_ROLE where ROLE_ID = #{Role_Id}
+  </delete>
+
+  <insert id="insertRole" parameterType="com.tk.ssm.model.A_ROLE" >
+    insert into A_ROLE (ROLE_ID, ROLE_NAME)
+    values (#{ROLE.roleId}, #{ROLE.roleName})
+  </insert>
+
+  <update id="updateRole" parameterType="com.tk.ssm.model.A_ROLE" >
+    update A_ROLE
+    set ROLE_NAME = #{ROLE.roleName}
+    where ROLE_ID = #{ROLE.roleId}
+  </update>
+
+</mapper>
